@@ -23,8 +23,8 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     @Transactional
     void delete(Booking booking);
 
-    @Modifying
+ /*   @Modifying
     @Transactional
     @Query("update Booking b set b.client= :client WHERE b.id = :id")
-    void update(@Param(value = "client") Client client, @Param(value = "id") Long id);
+    void update(@Param(value = "client") Client client, @Param(value = "id") Long id);*/
 }

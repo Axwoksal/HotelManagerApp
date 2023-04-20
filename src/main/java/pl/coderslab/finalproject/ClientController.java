@@ -2,8 +2,10 @@ package pl.coderslab.finalproject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,22 +23,20 @@ public class ClientController {
         this.clientRepository = clientRepository;
     }
 
-    @RequestMapping(value = "/addClientsData/{id}", method = RequestMethod.GET)
-    public String formAddClient(@PathVariable Long id, Model model) {
-        Booking booking = bookingRepository.findFirstById(id);
+    @RequestMapping(value = "/addClientsData", method = RequestMethod.GET)
+    public String formAddClient(Model model) {
         Client client = new Client();
         model.addAttribute("client", client);
-        model.addAttribute("booking", booking);
         return "addClientsData";
     }
 
     @RequestMapping(value = "/addClientsData", method = RequestMethod.POST)
-    public String saveClient(Booking booking, Client client) {
-        List<Booking> bookings = bookingRepository.findAllByClient(client);
-        bookings.add(booking);
-        client.setBookings(bookings);
+    public String saveClient(@Valid Client client, BindingResult result) {
+        if (result.hasErrors()) {
+            return "addClientsData";
+        }
         clientRepository.save(client);
-        return "redirect:/all-bookings";
+        return "redirect:/all-clients";
     }
 
     @GetMapping("/deleteClient/{id}")

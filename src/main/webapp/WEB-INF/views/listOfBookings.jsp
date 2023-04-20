@@ -11,31 +11,39 @@
 <html>
 <head>
     <title>Bookings</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<table>
-<tr>
-    <th>Check-in</th>
-    <th>Check-out</th>
-    <th>Number of guests</th>
-    <th>Room number</th>
-    <th>Client's last name</th>
-    <th>edit</th>
-    <th>cancel</th>
-    <th>add client's data</th>
-</tr>
-<c:forEach items="${bookings}" var="booking">
+<table class="table table-light table-bordered">
     <tr>
+    <thead style="text-align: center; background-color: lightgray">
+    <th scope="col">Check-in</th>
+    <th scope="col">Check-out</th>
+    <th scope="col">Number of guests</th>
+    <th scope="col">Room number</th>
+    <th scope="col">Notes</th>
+    <th scope="col">Client's last name</th>
+    <th scope="col">price</th>
+    <th scope="col">edit</th>
+    <th scope="col">cancel</th>
+</tr>
+    </thead>
+<c:forEach items="${bookings}" var="booking">
+    <tr scope="row" style="text-align: center">
         <td>${booking.startDate}</td>
         <td>${booking.endDate}</td>
         <td>${booking.numberOfGuests}</td>
         <td>${booking.room.number}</td>
+        <td>${booking.notes}</td>
         <td>${booking.client.lastName}</td>
+        <td>${booking.price}</td>
         <td>Update</td>
-        <td><a href="<c:out value="/addClientsData/${booking.id}"/>">Add client's data</a></td>
         <td><a href="<c:out value="/deleteBooking/${booking.id}"/>">Delete booking</a></td>
     </tr>
 </c:forEach>
 </table>
+<a href="<c:out value="/"/>">Return to main menu</a>
+    </div>
+</div>
 </body>
 </html>

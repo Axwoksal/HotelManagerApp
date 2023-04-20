@@ -1,5 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -12,21 +12,57 @@
 <html>
 <head>
     <title>Add client's data</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 
 <%--@elvariable id="client" type="pl.coderslab.finalproject.Client"--%>
+<div class="container">
+    <h1>Client's data form</h1>
+    <div class="card">
+        <div class="card-body">
 <form:form action="/addClientsData" method="post"
            modelAttribute="client">
-    </br>
-    First name: <form:input type="text" path="firstName" />
-    </br>
-    Last name: <form:input type="text" path="lastName" />
-    </br>
-    email: <form:input type="text" path="email" />
-    </br>
-    Phone: <form:input path="phone" />
-    <input type="submit" value="Save client's data">
+    <div class="form-group row">
+    <label for="firstName" class="col-sm-2 col-form-label">First
+        name: </label>
+    <div class="col-sm-7">
+    <form:input type="text" path="firstName" />
+        <br>
+        <form:errors path="firstName" cssClass="error" />
+    </div>
+        </div>
+    <div class="form-group row">
+        <label for="lastName" class="col-sm-2 col-form-label">Last
+            name: </label>
+        <div class="col-sm-7">
+   <form:input type="text" path="lastName" />
+            <br>
+            <form:errors path="lastName" cssClass="error" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="email" class="col-sm-2 col-form-label">E-mail</label>
+        <div class="col-sm-7">
+    <form:input type="text" path="email" />
+            <br>
+            <form:errors path="email" cssClass="error" />
+        </div>
+    </div>
+            <div class="form-group row">
+                <label for="phone" class="col-sm-2 col-form-label">Phone number
+                    </label>
+                <div class="col-sm-7">
+    <form:input path="phone" placeholder="+"/>
+                    <br>
+                    <form:errors path="phone" cssClass="error" />
+                    </div>
+            </div>
+    <input type="submit" class="btn btn-primary" value="Save client's data">
 </form:form>
+            <a href="<c:out value="/"/>" class="link-primary">Return to main menu</a>
+        </div>
+    </div>
+        </div>
 </body>
 </html>
