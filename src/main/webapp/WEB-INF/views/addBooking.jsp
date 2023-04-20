@@ -53,6 +53,12 @@
     <form:select itemValue="id" itemLabel="lastName" items="${clients}" path="client.id"/>
         </div>
     </div>
+    <div class="form-group row">
+        <label for="client.id" class="col-sm-2 col-form-label">Client: </label>
+        <div class="col-sm-7">
+            <form:select itemValue="id" itemLabel="number" items="${rooms}" path="room.id"/>
+        </div>
+    </div>
     <input type="submit" class="btn-primary" value="Save">
 </form:form>
             <a href="<c:out value="/"/>">Return to main menu</a>

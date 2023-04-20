@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@ToString(exclude={"bookings"})
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -19,4 +19,6 @@ public class Room {
     private Long number;
 
     private Integer placesToSleep;
+
+    private Double price;
 }

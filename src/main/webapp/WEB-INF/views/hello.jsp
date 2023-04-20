@@ -27,6 +27,8 @@
     <h3><a href="<c:out value="/all-bookings"/>">Display all bookings</a></h3>
 <br>
     <h3><a href="<c:out value="/all-clients"/>">Display all clients</a></h3>
+        <br>
+        <h3><a href="<c:out value="/free-rooms"/>">Display free rooms</a></h3>
     </div>
 <%--<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Europe%2FWarsaw&hl=en_GB&src=NTI4ZWE0Mjg5NDY4Zjc3OWExNTA5YjhkNzRjMjE0MTlmNjZmYzllMWQ5OThhYmI1ZWFlOTJkZTNhNDExOTMxOUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23E67C73" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>--%>
 </div>
