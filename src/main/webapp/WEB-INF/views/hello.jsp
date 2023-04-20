@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<div class="container-fluid" style="margin: auto; text-align: center; padding: 70px 0;">
+<div class="container-fluid" style="margin: auto; text-align: center; padding: 70px 0">
 <h1 style="background-color:lightgray">Welcome in the Hotel Manager App</h1>
     <div class="container-fluid" style="margin: auto; text-align: center; padding: 120px 0;">
 <h2>What would you like to do?</h2>

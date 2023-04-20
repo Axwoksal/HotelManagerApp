@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,22 @@ public class ClientController {
         clientRepository.save(client);
         return "redirect:/all-clients";
     }
+
+    @GetMapping("/updateClient/{id}")
+    public String showUpdateClientForm(@PathVariable Long id, Model model) {
+        model.addAttribute("client", clientRepository.findFirstById(id));
+        return "updateClientsData";
+    }
+
+    @PostMapping(value = "/updateClient")
+    public String updateClient(@Valid Client client, BindingResult result) {
+        if (result.hasErrors()) {
+            return "updateClientsData";
+        }
+        clientRepository.save(client);
+        return "redirect:/all-clients";
+    }
+
 
     @GetMapping("/deleteClient/{id}")
     public String deleteClient(@PathVariable Long id) {

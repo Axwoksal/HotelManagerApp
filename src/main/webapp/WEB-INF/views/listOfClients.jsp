@@ -31,7 +31,7 @@
         <td>${client.lastName}</td>
         <td>${client.email}</td>
         <td>${client.phone}</td>
-        <td>Update</td>
+        <td><a href="<c:out value="/updateClient/${client.id}"/>">Update client</a></td>
         <td><a href="<c:out value="/deleteClient/${client.id}"/>">Delete client</a></td>
     </tr>
 </c:forEach>

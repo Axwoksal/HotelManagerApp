@@ -59,7 +59,23 @@ public class BookingController {
             return "listOfBookings";
         }
 
-        @GetMapping("/deleteBooking/{id}")
+    @GetMapping("/updateBooking/{id}")
+    public String showUpdateBookingForm(@PathVariable Long id, Model model) {
+        model.addAttribute("booking", bookingRepository.findFirstById(id));
+        return "updateBooking";
+    }
+
+    @PostMapping(value = "/updateBooking")
+    public String updateBooking(@Valid Booking booking, BindingResult result) {
+        if (result.hasErrors()) {
+            return "updateBooking";
+        }
+        bookingRepository.save(booking);
+        return "redirect:/all-bookings";
+    }
+
+
+    @GetMapping("/deleteBooking/{id}")
     public String deleteBooking(@PathVariable Long id) {
         Booking booking = bookingRepository.findFirstById(id);
         bookingRepository.delete(booking);

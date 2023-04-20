@@ -37,7 +37,7 @@
         <td>${booking.notes}</td>
         <td>${booking.client.lastName}</td>
         <td>${booking.price}</td>
-        <td>Update</td>
+        <td><a href="<c:out value="/updateBooking/${booking.id}"/>">Update booking</a></td>
         <td><a href="<c:out value="/deleteBooking/${booking.id}"/>">Delete booking</a></td>
     </tr>
 </c:forEach>
