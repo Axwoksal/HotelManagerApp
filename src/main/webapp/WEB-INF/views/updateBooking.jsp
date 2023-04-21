@@ -11,13 +11,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Add a booking</title>
+    <title>Update a booking</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 <%--@elvariable id="booking" type="pl.coderslab.finalproject.Booking"--%>
 <div class="container">
-    <h1>Add a new booking</h1>
+    <h1>Update a booking</h1>
     <div class="card">
         <div class="card-body">
 <form:form action="/updateBooking" method="post"
@@ -52,6 +52,12 @@
         <label for="client.id" class="col-sm-2 col-form-label">Client: </label>
         <div class="col-sm-7">
     <form:select itemValue="id" itemLabel="lastName" items="${clients}" path="client.id"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="client.id" class="col-sm-2 col-form-label">Room: </label>
+        <div class="col-sm-7">
+            <form:select itemValue="id" itemLabel="number" items="${rooms}" path="room.id"/>
         </div>
     </div>
     <input type="submit" class="btn-primary" value="Save">

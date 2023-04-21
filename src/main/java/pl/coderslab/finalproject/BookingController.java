@@ -1,5 +1,6 @@
 package pl.coderslab.finalproject;
 
+import net.bytebuddy.asm.Advice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -46,8 +48,16 @@ public class BookingController {
         if (result.hasErrors()) {
             return "addBooking";
         }
-        model.addAttribute("clients", clientRepository.findAll());
-        model.addAttribute("rooms", roomRepository.findAll());
+        /*model.addAttribute("clients", clientRepository.findAll());
+        model.addAttribute("rooms", roomRepository.findAll());*/
+        LocalDate startDate = booking.getStartDate();
+        LocalDate endDate = booking.getEndDate();
+        Period period = Period.between(startDate, endDate);
+        int numberOfDays = Math.abs(period.getDays());
+        Room room = roomRepository.findFirstById(booking.getRoom().getId());
+        Double priceOfRoom = room.getPrice();
+        Double totalPrice = priceOfRoom*(double)numberOfDays;
+        booking.setPrice(totalPrice);
         bookingRepository.save(booking);
         return "redirect:/all-bookings";
     }
@@ -62,14 +72,18 @@ public class BookingController {
     @GetMapping("/updateBooking/{id}")
     public String showUpdateBookingForm(@PathVariable Long id, Model model) {
         model.addAttribute("booking", bookingRepository.findFirstById(id));
+        model.addAttribute("clients", clientRepository.findAll());
+        model.addAttribute("rooms", roomRepository.findAll());
         return "updateBooking";
     }
 
     @PostMapping(value = "/updateBooking")
-    public String updateBooking(@Valid Booking booking, BindingResult result) {
+    public String updateBooking(@Valid Booking booking, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "updateBooking";
         }
+        model.addAttribute("clients", clientRepository.findAll());
+        model.addAttribute("rooms", roomRepository.findAll());
         bookingRepository.save(booking);
         return "redirect:/all-bookings";
     }

@@ -33,12 +33,11 @@ public class Booking {
     private Integer numberOfGuests;
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.MERGE, fetch=FetchType.EAGER)
+    @ManyToOne
     private Client client;
 
     private String notes;
-    @ManyToOne
-    /*(fetch=FetchType.EAGER)*/
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.MERGE)
     private Room room;
 
     private Double price;

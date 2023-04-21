@@ -26,8 +26,7 @@ public class ClientController {
 
     @RequestMapping(value = "/addClientsData", method = RequestMethod.GET)
     public String formAddClient(Model model) {
-        Client client = new Client();
-        model.addAttribute("client", client);
+        model.addAttribute("client", new Client());
         return "addClientsData";
     }
 

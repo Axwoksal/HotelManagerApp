@@ -19,6 +19,7 @@
     <thead style="text-align: center; background-color: lightgray">
     <th scope="col">Room number</th>
     <th scope="col">number of places to sleep</th>
+    <th scope="col">price (euro)</th>
     </thead>
 </tr>
 <c:forEach items="${freeRooms}" var="room">

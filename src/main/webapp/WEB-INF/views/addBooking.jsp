@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="client.id" class="col-sm-2 col-form-label">Client: </label>
+        <label for="client.id" class="col-sm-2 col-form-label">Room: </label>
         <div class="col-sm-7">
             <form:select itemValue="id" itemLabel="number" items="${rooms}" path="room.id"/>
         </div>
