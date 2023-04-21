@@ -21,4 +21,6 @@ public class Room {
     private Integer placesToSleep;
 
     private Double price;
+
+    private boolean privateBathroom;
 }

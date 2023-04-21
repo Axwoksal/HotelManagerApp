@@ -24,6 +24,7 @@
     <th scope="col">Notes</th>
     <th scope="col">Client's last name</th>
     <th scope="col">price</th>
+    <th scope="col">breakfast</th>
     <th scope="col">edit</th>
     <th scope="col">cancel</th>
 </tr>
@@ -37,6 +38,14 @@
         <td>${booking.notes}</td>
         <td>${booking.client.lastName}</td>
         <td>${booking.price}</td>
+    <c:choose>
+    <c:when test="${booking.breakfast}">
+    <td>yes</td>
+    </c:when>
+    <c:otherwise>
+            <td>no</td>
+    </c:otherwise>
+</c:choose>
         <td><a href="<c:out value="/updateBooking/${booking.id}"/>">Update booking</a></td>
         <td><a href="<c:out value="/deleteBooking/${booking.id}"/>">Delete booking</a></td>
     </tr>

@@ -20,6 +20,7 @@
     <th scope="col">Room number</th>
     <th scope="col">number of places to sleep</th>
     <th scope="col">price (euro)</th>
+    <th scope="col">private bathroom</th>
     </thead>
 </tr>
 <c:forEach items="${freeRooms}" var="room">
@@ -27,6 +28,14 @@
         <td>${room.number}</td>
         <td>${room.placesToSleep}</td>
         <td>${room.price}</td>
+            <c:choose>
+                <c:when test="${room.privateBathroom}">
+                    <td>yes</td>
+                </c:when>
+              <c:otherwise>
+                  <td>no</td>
+              </c:otherwise>
+            </c:choose>
     </tr>
 </c:forEach>
 </table>

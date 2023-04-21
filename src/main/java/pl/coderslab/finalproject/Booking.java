@@ -41,4 +41,8 @@ public class Booking {
     private Room room;
 
     private Double price;
+
+    private boolean breakfast;
+
+
 }

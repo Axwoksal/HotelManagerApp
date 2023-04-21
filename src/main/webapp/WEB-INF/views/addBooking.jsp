@@ -59,6 +59,12 @@
             <form:select itemValue="id" itemLabel="number" items="${rooms}" path="room.id"/>
         </div>
     </div>
+    <div class="form-group row">
+        <label for="client.id" class="col-sm-2 col-form-label">Breakfast: </label>
+        <div class="col-sm-7">
+            <form:checkbox path="breakfast"/>
+        </div>
+    </div>
     <input type="submit" class="btn-primary" value="Save">
 </form:form>
             <a href="<c:out value="/"/>">Return to main menu</a>

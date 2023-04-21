@@ -48,8 +48,6 @@ public class BookingController {
         if (result.hasErrors()) {
             return "addBooking";
         }
-        /*model.addAttribute("clients", clientRepository.findAll());
-        model.addAttribute("rooms", roomRepository.findAll());*/
         LocalDate startDate = booking.getStartDate();
         LocalDate endDate = booking.getEndDate();
         Period period = Period.between(startDate, endDate);
@@ -57,6 +55,10 @@ public class BookingController {
         Room room = roomRepository.findFirstById(booking.getRoom().getId());
         Double priceOfRoom = room.getPrice();
         Double totalPrice = priceOfRoom*(double)numberOfDays;
+        boolean breakfast = booking.isBreakfast();
+        if (breakfast) {
+            totalPrice+=10D*(double)numberOfDays;
+        }
         booking.setPrice(totalPrice);
         bookingRepository.save(booking);
         return "redirect:/all-bookings";
@@ -126,7 +128,7 @@ public class BookingController {
             if (booking.getStartDate().isBefore(date1) || booking.getStartDate().isAfter(date2)) {
                 if (booking.getEndDate().isBefore(date1) || booking.getEndDate().isAfter(date2)) {
                     Room freeRoom = booking.getRoom();
-                    if (!freeRooms.contains(freeRoom)&&freeRoom.getPlacesToSleep()>numberOfGuests) {
+                    if (!freeRooms.contains(freeRoom)&&freeRoom.getPlacesToSleep()>=numberOfGuests) {
                         freeRooms.add(freeRoom);
                     }
                     }
@@ -136,7 +138,7 @@ public class BookingController {
         return "listOfFreeRooms";
     }
 
-
+/*
     @ModelAttribute("clients")
     public Collection<Client> clients() {
         return this.clientRepository.findAll();
@@ -145,5 +147,5 @@ public class BookingController {
     @ModelAttribute("rooms")
     public Collection<Room> rooms() {
         return this.roomRepository.findAll();
-    }
+    }*/
 }
