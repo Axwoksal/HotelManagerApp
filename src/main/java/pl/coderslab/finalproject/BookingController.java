@@ -34,12 +34,12 @@ public class BookingController {
     }
 
     @GetMapping("/")
-        public String hello() {
-            return "hello";
-        }
+    public String hello() {
+        return "hello";
+    }
 
 
-    @RequestMapping(value = "/add", method=RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String showForm(Model model) {
         model.addAttribute("clients", clientRepository.findAll());
         model.addAttribute("rooms", roomRepository.findAll());
@@ -58,22 +58,52 @@ public class BookingController {
         int numberOfDays = Math.abs(period.getDays());
         Room room = roomRepository.findFirstById(booking.getRoom().getId());
         Double priceOfRoom = room.getPrice();
-        Double totalPrice = priceOfRoom*(double)numberOfDays;
+        Double totalPrice = priceOfRoom * (double) numberOfDays;
         boolean breakfast = booking.isBreakfast();
         if (breakfast) {
-            totalPrice+=10D*(double)numberOfDays;
+            totalPrice += 10D * (double) numberOfDays * booking.getNumberOfGuests();
         }
         booking.setPrice(totalPrice);
         bookingRepository.save(booking);
         return "redirect:/all-bookings";
     }
 
-        @GetMapping("/all-bookings")
+    @GetMapping("/all-bookings")
     public String allBookings(Model model) {
-            List<Booking> bookings = bookingRepository.findAll();
-            model.addAttribute("bookings", bookings);
-            return "listOfBookings";
-        }
+        List<Booking> bookings = bookingRepository.findAll();
+        model.addAttribute("bookings", bookings);
+        return "listOfBookings";
+    }
+
+    @GetMapping("/details/{id}")
+    public String displayDetails(@PathVariable Long id, Model model) {
+    Booking booking = bookingRepository.findFirstById(id);
+    LocalDate startDate = booking.getStartDate();
+    LocalDate endDate = booking.getEndDate();
+    Period period = Period.between(startDate, endDate);
+    int numberOfDays = Math.abs(period.getDays()); // wyświetlić
+
+        Room room = roomRepository.findFirstById(booking.getRoom().getId());
+        Double priceOfRoom = room.getPrice(); // wyświetlić
+        Double totalPriceForRoom = priceOfRoom * (double) numberOfDays; // wyświetlić
+
+        boolean breakfast = booking.isBreakfast();
+        Double breakfastPrice = 10D; //wyświetlić
+        Double totalPriceForBreakfast = 0D;
+        if (breakfast) {
+            totalPriceForBreakfast = breakfastPrice * numberOfDays * booking.getNumberOfGuests();
+        }//wyświetlić
+        Double totalPrice = totalPriceForRoom + totalPriceForBreakfast; //wyświetlić
+        model.addAttribute("numberOfDays", numberOfDays);
+        model.addAttribute("priceOfRoom", priceOfRoom);
+        model.addAttribute("totalPriceForRoom", totalPriceForRoom);
+        model.addAttribute("breakfastPrice", breakfastPrice);
+        model.addAttribute("numberOfGuests", booking.getNumberOfGuests());
+        model.addAttribute("totalPriceForBreakfast", totalPriceForBreakfast);
+        model.addAttribute("totalPrice", totalPrice);
+    return "priceDetails";
+}
+
 
     @GetMapping("/updateBooking/{id}")
     public String showUpdateBookingForm(@PathVariable Long id, Model model) {

@@ -48,7 +48,7 @@ public class Booking {
     private boolean breakfast;
 
    /* @AssertTrue
-    public boolean isValidRange() {
+    public boolean geIsValid() {
         return endDate.isAfter(startDate);
 
     }*/

@@ -24,6 +24,7 @@
     <th scope="col">Notes</th>
     <th scope="col">Client's last name</th>
     <th scope="col">price</th>
+    <th scope="col">display details</th>
     <th scope="col">breakfast</th>
     <th scope="col">edit</th>
     <th scope="col">cancel</th>
@@ -38,6 +39,7 @@
         <td>${booking.notes}</td>
         <td>${booking.client.lastName}</td>
         <td>${booking.price}</td>
+    <td><a href="<c:out value="/details/${booking.id}"/>">price details</a></td>
     <c:choose>
     <c:when test="${booking.breakfast}">
     <td>yes</td>
