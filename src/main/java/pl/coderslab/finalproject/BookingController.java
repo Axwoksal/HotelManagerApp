@@ -1,9 +1,12 @@
 package pl.coderslab.finalproject;
 
 import net.bytebuddy.asm.Advice;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +25,8 @@ public class BookingController {
     private final RoomRepository roomRepository;
     private final ClientRepository clientRepository;
 
-    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository, RoomRepository roomRepository) {
+
+    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository, RoomRepository roomRepository, Validator comparedateValidator) {
 
         this.bookingRepository = bookingRepository;
         this.roomRepository = roomRepository;
@@ -44,7 +48,7 @@ public class BookingController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String saveBooking(@Valid Booking booking, Model model, BindingResult result) {
+    public String saveBooking(@Valid Booking booking, BindingResult result) {
         if (result.hasErrors()) {
             return "addBooking";
         }
@@ -138,7 +142,7 @@ public class BookingController {
         return "listOfFreeRooms";
     }
 
-/*
+
     @ModelAttribute("clients")
     public Collection<Client> clients() {
         return this.clientRepository.findAll();
@@ -147,5 +151,5 @@ public class BookingController {
     @ModelAttribute("rooms")
     public Collection<Room> rooms() {
         return this.roomRepository.findAll();
-    }*/
+    }
 }

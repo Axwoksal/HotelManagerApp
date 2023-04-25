@@ -26,18 +26,23 @@
         <label for="startDate" class="col-sm-2 col-form-label">Check-in: </label>
         <div class="col-sm-7">
     <form:input type="date" path="startDate" />
+            <form:errors path="startDate" cssClass="error" />
         </div>
     </div>
     <div class="form-group row">
         <label for="endDate" class="col-sm-2 col-form-label">Check-out: </label>
         <div class="col-sm-7">
     <form:input type="date" path="endDate" />
+            <br>
+            <form:errors path="endDate" cssClass="error" />
         </div>
     </div>
     <div class="form-group row">
         <label for="numberOfGuests" class="col-sm-2 col-form-label">Number of guests: </label>
         <div class="col-sm-7">
     <form:input path="numberOfGuests" />
+            <br>
+            <form:errors path="numberOfGuests" cssClass="error" />
         </div>
     </div>
     <div class="form-group row">
@@ -67,6 +72,7 @@
     </div>
     <input type="submit" class="btn-primary" value="Save">
 </form:form>
+            <form:errors/>
             <a href="<c:out value="/"/>">Return to main menu</a>
         </div>
     </div>
