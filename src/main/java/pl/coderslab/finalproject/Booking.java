@@ -2,11 +2,9 @@ package pl.coderslab.finalproject;
 
 import lombok.*;
 import org.hibernate.validator.constraints.Range;
-import org.hibernate.validator.constraints.ScriptAssert;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -40,16 +38,11 @@ public class Booking {
     private Client client;
 
     private String notes;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Room room;
 
     private Double price;
 
     private boolean breakfast;
 
-   /* @AssertTrue
-    public boolean geIsValid() {
-        return endDate.isAfter(startDate);
-
-    }*/
 }

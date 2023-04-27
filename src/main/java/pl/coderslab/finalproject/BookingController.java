@@ -1,12 +1,9 @@
 package pl.coderslab.finalproject;
 
-import net.bytebuddy.asm.Advice;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +13,6 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 @Controller
 public class BookingController {
@@ -118,8 +114,18 @@ public class BookingController {
         if (result.hasErrors()) {
             return "updateBooking";
         }
-        model.addAttribute("clients", clientRepository.findAll());
-        model.addAttribute("rooms", roomRepository.findAll());
+        LocalDate startDate = booking.getStartDate();
+        LocalDate endDate = booking.getEndDate();
+        Period period = Period.between(startDate, endDate);
+        int numberOfDays = Math.abs(period.getDays());
+        Room room = roomRepository.findFirstById(booking.getRoom().getId());
+        Double priceOfRoom = room.getPrice();
+        Double totalPrice = priceOfRoom * (double) numberOfDays;
+        boolean breakfast = booking.isBreakfast();
+        if (breakfast) {
+            totalPrice += 10D * (double) numberOfDays * booking.getNumberOfGuests();
+        }
+        booking.setPrice(totalPrice);
         bookingRepository.save(booking);
         return "redirect:/all-bookings";
     }
