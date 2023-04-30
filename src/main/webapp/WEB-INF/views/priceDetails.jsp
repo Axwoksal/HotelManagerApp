@@ -1,11 +1,11 @@
-<%--@elvariable id="numberOfGuests" type="pl.coderslab.finalproject.BookingController"--%>
-<%--@elvariable id="breakfastPrice" type="pl.coderslab.finalproject.BookingController"--%>
-<%--@elvariable id="numberOfDays" type="pl.coderslab.finalproject.BookingController"--%>
-<%--@elvariable id="PriceOfRoom" type="pl.coderslab.finalproject.BookingController"--%><%--@elvariable id="priceOfRoom" type="pl.coderslab.finalproject.BookingController"--%>
-<%--@elvariable id="totalPriceForRoom" type="pl.coderslab.finalproject.BookingController"--%>
-<%--@elvariable id="priceOfBreakfast" type="pl.coderslab.finalproject.BookingController"--%>
-<%--@elvariable id="totalPriceForBreakfast" type="pl.coderslab.finalproject.BookingController"--%>
-<%--@elvariable id="totalPrice" type="pl.coderslab.finalproject.BookingController"--%>
+<%--@elvariable id="numberOfGuests" type="pl.coderslab.finalproject.Booking.BookingController"--%>
+<%--@elvariable id="breakfastPrice" type="pl.coderslab.finalproject.Booking.BookingController"--%>
+<%--@elvariable id="numberOfDays" type="pl.coderslab.finalproject.Booking.BookingController"--%>
+<%--@elvariable id="PriceOfRoom" type="pl.coderslab.finalproject.Booking.BookingController"--%><%--@elvariable id="priceOfRoom" type="pl.coderslab.finalproject.Booking.BookingController"--%>
+<%--@elvariable id="totalPriceForRoom" type="pl.coderslab.finalproject.Booking.BookingController"--%>
+<%--@elvariable id="priceOfBreakfast" type="pl.coderslab.finalproject.Booking.BookingController"--%>
+<%--@elvariable id="totalPriceForBreakfast" type="pl.coderslab.finalproject.Booking.BookingController"--%>
+<%--@elvariable id="totalPrice" type="pl.coderslab.finalproject.Booking.BookingController"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%--

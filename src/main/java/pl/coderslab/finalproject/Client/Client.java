@@ -1,6 +1,7 @@
-package pl.coderslab.finalproject;
+package pl.coderslab.finalproject.Client;
 
 import lombok.*;
+import pl.coderslab.finalproject.Booking.Booking;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;

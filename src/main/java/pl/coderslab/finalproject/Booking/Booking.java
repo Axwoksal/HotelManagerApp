@@ -1,8 +1,11 @@
-package pl.coderslab.finalproject;
+package pl.coderslab.finalproject.Booking;
 
 import lombok.*;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.coderslab.finalproject.Client.Client;
+import pl.coderslab.finalproject.CompareDate;
+import pl.coderslab.finalproject.Room.Room;
 
 import javax.persistence.*;
 import javax.validation.constraints.Future;

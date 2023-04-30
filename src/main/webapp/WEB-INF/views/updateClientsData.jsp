@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<%--@elvariable id="client" type="pl.coderslab.finalproject.Client"--%>
+<%--@elvariable id="client" type="pl.coderslab.finalproject.Client.Client"--%>
 <div class="container">
     <h1>Update client's data</h1>
     <div class="card">

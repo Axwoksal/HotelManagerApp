@@ -1,10 +1,14 @@
-package pl.coderslab.finalproject;
+package pl.coderslab.finalproject.Booking;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.finalproject.Client.Client;
+import pl.coderslab.finalproject.Client.ClientRepository;
+import pl.coderslab.finalproject.Room.Room;
+import pl.coderslab.finalproject.Room.RoomRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
